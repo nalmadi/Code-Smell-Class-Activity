@@ -1,7 +1,7 @@
 public class UserService extends Email{
     public void registerUser(String email) {
         if (checkEmail(email)) {
-            String cleanedEmail = sanitizeEmail(email);
+            String cleanedEmail = normalizeEmail(email);
             // Register the user with the cleaned email
             System.out.println("User registered with email: " + cleanedEmail);
         } else {
@@ -25,9 +25,9 @@ public class AdminService extends Email{
         }
     }
 
-    private String normalizeEmail(String email) {
-        return email.trim().toLowerCase();
-    }
+    // private String normalizeEmail(String email) {
+    //     return email.trim().toLowerCase();
+    // }
 }
 
 public class Email {
@@ -35,9 +35,9 @@ public class Email {
         return email != null && email.contains("@");
     }
     
-    // private String normalizeEmail(String email) {
-    //     return email.trim().toLowerCase();
-    // }
+    private String normalizeEmail(String email) {
+        return email.trim().toLowerCase();
+    }
 }
 
 // private boolean isEmailAddressValid(String email) {
