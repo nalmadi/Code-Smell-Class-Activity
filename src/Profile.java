@@ -1,3 +1,5 @@
+// From Cathy's mac
+
 public class User {
     private String username;
     private Profile profile;
