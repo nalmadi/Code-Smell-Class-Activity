@@ -5,7 +5,7 @@ This repository contains files with code smells, your mission (should you choose
 
 # Activity overview:
 - Fork this repository to get copy of your own.
-- Clone the repository to one of the computers on your group.
+- Clone the forked repository to one of the computers on your group.
 - Use one computer in a pair-programming fashion to refactor the code collaboratively.
 - Each refactored snippet should be on a separate branch.
 - Commit and Push Changes and crate a pull request.
