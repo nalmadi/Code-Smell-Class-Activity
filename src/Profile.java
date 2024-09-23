@@ -11,10 +11,6 @@ public class User {
         return username;
     }
 
-    // Method that is overly interested in Profile details
-    public String getProfileSummary() {
-        return "User: " + username + ", Email: " + profile.getEmail() + ", Address: " + profile.getAddress();
-    }
 }
 
 public class Profile {
@@ -33,4 +29,10 @@ public class Profile {
     public String getAddress() {
         return address;
     }
+
+     // Method that is overly interested in Profile details
+     public String getProfileSummary(User user) {
+        return "User: " + user.getUsername() + ", Email: " + profile.getEmail() + ", Address: " + profile.getAddress();
+    }
+
 }
