@@ -1,17 +1,58 @@
+abstract class Package{
+    double weightCost;
+    public Package(){
+
+    }
+    abstract double getCost();
+}
+
+class smallPackage extends Package {
+    double weightCost = .5;
+    public double getCost(){
+        return weightCost;
+    }
+}
+
+class mediumPackage extends Package {
+    double weightCost = .75;
+    public double getCost(){
+        return weightCost;
+    }
+}
+
+class BigPackage extends Package {
+    double weightCost = 1;
+    public double getCost(){
+        return weightCost;
+    }
+}
+
+class VeryBigPackage extends Package {
+    double weightCost = 1.5;
+    public double getCost(){
+        return weightCost;
+    }
+}
+
 public class ShippingCalculator {
-    public double calculateShippingCost(double weight, double distance) {
+    Package mypackage;
+    public double calculateShippingCost(Package mypackage, double distance) {
         double cost;
-
-        if (weight <= 5) {
-            cost = distance * 0.50; // $0.50 per mile for weights up to 5 lbs
-        } else if (weight <= 10) {
-            cost = distance * 0.75; // $0.75 per mile for weights up to 10 lbs
-        } else if (weight <= 20) {
-            cost = distance * 1.00; // $1.00 per mile for weights up to 20 lbs
-        } else {
-            cost = distance * 1.50; // $1.50 per mile for weights over 20 lbs
-        }
-
+        cost = distance * mypackage.getCost();
+    
         return cost;
     }
+
+    public static void main(String[] args){
+
+        ShippingCalculator mySC = new ShippingCalculator();
+        smallPackage myPackage1 = new smallPackage();
+        mediumPackage myPackage2 = new mediumPackage();
+        BigPackage myPackage3 = new BigPackage();
+        VeryBigPackage myPackage4 = new VeryBigPackage();
+        System.out.println(mySC.calculateShippingCost(myPackage1, 10));
+        System.out.println(mySC.calculateShippingCost(myPackage2, 10));
+        System.out.println(mySC.calculateShippingCost(myPackage3, 10));
+        System.out.println(mySC.calculateShippingCost(myPackage4, 10));
+	}
 }
