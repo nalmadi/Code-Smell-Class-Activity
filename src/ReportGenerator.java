@@ -3,31 +3,41 @@ import java.util.List;
 public class ReportGenerator {
     // Generates a detailed report
     public void generateReport(List<User> users) {
-        // Step 1: Initialize report content
+        // Step 1: Create the report content
+        String reportContent = createReportContent(users);
+
+        // Step 2: Save the report to a file
+        saveReportToFile(reportContent);
+    }
+
+    // Creates the report content based on user data
+    private String createReportContent(List<User> users) {
         StringBuilder report = new StringBuilder();
         report.append("User Report\n");
         report.append("------------\n");
 
-        // Step 2: Process each user
+        // Step 2: Process and format each user's data
         for (User user : users) {
-            // Retrieve user data
-            String username = user.getUsername();
-            String email = user.getEmail();
-            String address = user.getAddress();
-
-            // Perform some data processing
-            String processedData = processUserData(username, email, address);
-
-            // Format data for report
-            String formattedData = formatReportData(username, email, address, processedData);
-
-            // Append formatted data to report
+            String formattedData = formatUserData(user);
             report.append(formattedData);
             report.append("\n");
         }
 
-        // Step 3: Save the report to a file
-        saveReportToFile(report.toString());
+        return report.toString();
+    }
+
+    // Formats a single user's data for the report
+    private String formatUserData(User user) {
+        // Retrieve user data
+        String username = user.getUsername();
+        String email = user.getEmail();
+        String address = user.getAddress();
+
+        // Process user data
+        String processedData = processUserData(username, email, address);
+
+        // Format the data for the report
+        return formatReportData(username, email, address, processedData);
     }
 
     // Processes user data
@@ -49,6 +59,7 @@ public class ReportGenerator {
     }
 }
 
+// User class to represent user data
 class User {
     private String username;
     private String email;
